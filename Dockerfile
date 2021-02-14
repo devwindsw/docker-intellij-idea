@@ -1,4 +1,4 @@
-FROM adoptopenjdk/openjdk8
+FROM adoptopenjdk/openjdk10
 
 RUN  \
   apt-get update && apt-get install --no-install-recommends -y \
@@ -8,7 +8,7 @@ RUN  \
   && rm -rf /var/lib/apt/lists/* \
   && useradd -ms /bin/bash devwindsw
 
-ARG idea_version=2019.2
+ARG idea_version=2020.3.2
 #ARG idea_source=https://download.jetbrains.com/idea/ideaIC-192.5728.98.tar.gz
 ARG idea_source=https://download.jetbrains.com/idea/ideaIC-$idea_version.tar.gz
 ARG idea_local_dir=.IdeaIC$idea_version
@@ -28,5 +28,5 @@ ENV HOME /home/devwindsw
 RUN mkdir /home/devwindsw/.Idea \
   && ln -sf /home/devwindsw/.Idea /home/devwindsw/$idea_local_dir
 
-CMD [ "/opt/idea/bin/idea.sh" ]
-
+#CMD [ "/opt/idea/bin/idea.sh" ]
+WORKDIR /opt/idea/bin

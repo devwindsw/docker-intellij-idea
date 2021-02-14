@@ -8,6 +8,9 @@ Dockerfile for Intellij IDEA
 ```
 mkdir intellij
 cd intellij
+mkdir .android
+mkdir .cache
+mkdir .config
 mkdir .idea
 mkdir .Idea
 mkdir .Idea.gradle
@@ -19,9 +22,12 @@ mkdir IdeaProjects
 
 ### 2. Start a container
 ```
-docker run --rm \
+docker run -it --rm \
   -e DISPLAY=${DISPLAY} \
   -v /tmp/.X11-unix:/tmp/.X11-unix \
+  -v /path/to/intellij/you/created/.android:/home/devwindsw/.androie \
+  -v /path/to/intellij/you/created/.cache:/home/devwindsw/.cache \
+  -v /path/to/intellij/you/created/.config:/home/devwindsw/.config \
   -v /path/to/intellij/you/created/.idea:/home/devwindsw/.idea \
   -v /path/to/intellij/you/created/.Idea:/home/devwindsw/.Idea \
   -v /path/to/intellij/you/created/.Idea.java:/home/devwindsw/.java \
